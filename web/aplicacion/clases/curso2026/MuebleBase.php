@@ -196,5 +196,27 @@ abstract class MuebleBase{
     //metodos
     abstract public function damePropiedadesAdicionales():array;
 
+    public static function puedeCrear(int &$numero):bool{
+        if(self::$_numMuebles>=self::_MAXIMO_MUEBLES){
+
+            $numero=0;
+            return false;
+        }
+        $numero=((self::_MAXIMO_MUEBLES)-(self::$_numMuebles));
+        return true;
+    }
+
+    public function __toString(): string{
+
+        return "MUEBLE de clase " . get_class($this)
+        . " con nombre " .  $this->getNombre() 
+        . ", fabricante " . $this->getFabricante()
+        . ", fabricado en " . $this->getPais()
+        . " a partir del año " . $this->getAnio() . ", vendido desde " . 
+        $this-> getFechaIniVenta() . " hasta " .
+        $this->getFechaFinVenta() . ", precio " . $this->getPrecio();
+    }
+
+
 }
 ?>
