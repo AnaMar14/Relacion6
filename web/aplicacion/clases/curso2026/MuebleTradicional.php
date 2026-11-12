@@ -38,9 +38,9 @@ final class MuebleTradicional extends MuebleBase{
     #[Override]
     public function __construct(string $nombre, string $fabricante = "FaMu:", string $pais = "ESPAÑA",
      int $anio = 2020, string $FechaIniVenta = "01/01/2020", string $FechaFinVenta = "31/12/2040",
-      float $precio = 30, float $peso=15, string $serie="S01")
+      float $precio = 30, float $peso=15, string $serie="S01", Caracteristicas $carac)
     {
-        parent::__construct($nombre, $fabricante, $pais, $anio, $FechaIniVenta, $FechaFinVenta, $precio);
+        parent::__construct($nombre, $fabricante, $pais, $anio, $FechaIniVenta, $FechaFinVenta, $precio,$carac);
         if(!$this->set_Peso($peso)){
             throw new Exception("Peso debe de estar entre 15 y 300");
         }
@@ -51,8 +51,15 @@ final class MuebleTradicional extends MuebleBase{
     #[Override]
     public function damePropiedadesAdicionales(): array
     {
-        throw new \Exception('Not implemented');
+        return["_peso","_serie"];
     }
 
+    //toString
+    #[Override]
+    public function __toString(): string
+    {
+        return parent::__toString() . ",pesa " . $this->_peso
+        . " y su serie es " . $this->_serie;
+    }
    
 }

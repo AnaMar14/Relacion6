@@ -11,6 +11,7 @@ abstract class MuebleBase{
     private string $_FechaIniVenta;
     private string $_FechaFinVenta;
     private float $_precio;
+    private Caracteristicas $_carac;
     
 
     //prohibimos asginar propiedades de manera dinamica
@@ -143,6 +144,7 @@ abstract class MuebleBase{
         return true;
     }
 
+  
     // precio
     public function getPrecio(): float
     {
@@ -158,9 +160,15 @@ abstract class MuebleBase{
         return true;
     }
     
+    //caracteristicas
+    public function getCaracteristicas():Caracteristicas
+    {
+        return $this->_carac;
+    }
+
     //constructor
     public function __construct(string $nombre, string $fabricante="FaMu:", string $pais="ESPAÑA",
-     int $anio=2020, string $FechaIniVenta="01/01/2020", string $FechaFinVenta="31/12/2040",float $precio=30){
+     int $anio=2020, string $FechaIniVenta="01/01/2020", string $FechaFinVenta="31/12/2040",float $precio=30, Caracteristicas $carac){
         
         if(self::$_numMuebles> self::_MAXIMO_MUEBLES){
             throw new Exception("Máximo de muebles creados alcanzado");
@@ -187,6 +195,7 @@ abstract class MuebleBase{
         if (!$this->setPrecio($precio)) {
             $this->_precio = 30;
         }
+        $this->_carac=$carac;
         self::$_numMuebles++;
         
         
@@ -206,6 +215,20 @@ abstract class MuebleBase{
         return true;
     }
 
+    public function añadirCaracteristicas(string $carac, mixed $valor){
+        $arrayArgumentos=func_get_args();
+        if(func_num_args()%2!=0){
+            array_pop($arrayArgumentos);
+        }
+        for($i=0; $i<count($arrayArgumentos);$i+=2){
+            $nombre = (string) $arrayArgumentos[$i];
+            $this->_carac->$nombre=$arrayArgumentos[$i+1];
+        }
+        
+    }
+
+
+    //toString
     public function __toString(): string{
 
         return "MUEBLE de clase " . get_class($this)
@@ -214,8 +237,10 @@ abstract class MuebleBase{
         . ", fabricado en " . $this->getPais()
         . " a partir del año " . $this->getAnio() . ", vendido desde " . 
         $this-> getFechaIniVenta() . " hasta " .
-        $this->getFechaFinVenta() . ", precio " . $this->getPrecio();
+        $this->getFechaFinVenta() . ", precio " . $this->getPrecio() 
+        . $this->_carac->__toString();
     }
+
 
 
 }

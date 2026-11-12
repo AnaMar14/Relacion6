@@ -30,10 +30,11 @@ final class MuebleReciclado extends MuebleBase{
         string $fechaIniVenta = "01/01/2020",
         string $fechaFinVenta = "31/12/2040",
         float $precio = 30,
-        int $porcentajeReciclado = 10
+        int $porcentajeReciclado = 10,
+        Caracteristicas $carac
     ) {
         
-        parent::__construct($nombre, $fabricante, $pais, $anio, $fechaIniVenta, $fechaFinVenta, $precio);
+        parent::__construct($nombre, $fabricante, $pais, $anio, $fechaIniVenta, $fechaFinVenta, $precio, $carac);
 
        
         if (!$this->set_porcentajeReciclado($porcentajeReciclado)) {
@@ -45,8 +46,14 @@ final class MuebleReciclado extends MuebleBase{
     #[Override]
     public function damePropiedadesAdicionales(): array
     {
-        throw new \Exception('Not implemented');
+        return ["_porcentajeReciclado"] ;
     }
 
-   
+   #[Override]
+   public function __toString(): string
+   {
+    return parent::__toString()  . 
+        " y un porcentaje de reciclado del " 
+        . $this->_porcentajeReciclado;;
+   }
 }
