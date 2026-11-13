@@ -168,7 +168,7 @@ abstract class MuebleBase{
 
     //constructor
     public function __construct(string $nombre, string $fabricante="FaMu:", string $pais="ESPAÑA",
-     int $anio=2020, string $FechaIniVenta="01/01/2020", string $FechaFinVenta="31/12/2040",float $precio=30, Caracteristicas $carac){
+     int $anio=2020, string $FechaIniVenta="01/01/2020", string $FechaFinVenta="31/12/2040",float $precio=30){
         
         if(self::$_numMuebles> self::_MAXIMO_MUEBLES){
             throw new Exception("Máximo de muebles creados alcanzado");
@@ -195,7 +195,7 @@ abstract class MuebleBase{
         if (!$this->setPrecio($precio)) {
             $this->_precio = 30;
         }
-        $this->_carac=$carac;
+        $this->_carac=new Caracteristicas();
         self::$_numMuebles++;
         
         

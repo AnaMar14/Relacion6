@@ -31,10 +31,10 @@ final class MuebleReciclado extends MuebleBase{
         string $fechaFinVenta = "31/12/2040",
         float $precio = 30,
         int $porcentajeReciclado = 10,
-        Caracteristicas $carac
+    
     ) {
         
-        parent::__construct($nombre, $fabricante, $pais, $anio, $fechaIniVenta, $fechaFinVenta, $precio, $carac);
+        parent::__construct($nombre, $fabricante, $pais, $anio, $fechaIniVenta, $fechaFinVenta, $precio);
 
        
         if (!$this->set_porcentajeReciclado($porcentajeReciclado)) {
