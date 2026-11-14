@@ -1,44 +1,7 @@
 <?php
-include_once(dirname(__FILE__) . "/cabecera.php");
-//controlador
-$barra=[
-     [
-       "TEXTO"=> "Inicio",
-       "ENLACE" =>"/index.php",
-       "ADICIONAL"=>">>"],
-     [ 
-       "TEXTO"=> "Otro"   
-     ],  
-     [ 
-       "TEXTO"=> "index",
-       "ADICIONAL"=> "&copy;&copy;"   
-     ]
-];
 
-//dibuja la plantilla de la vista
-inicioCabecera("Tienda");
-cabecera();
-finCabecera();
-inicioCuerpo("TIENDA",$barra);
-cuerpo();  //llamo a la vista
-finCuerpo();
-// **********************************************************
+// Enviamos la cabecera HTTP de redirección al navegador
+header("Location: aplicacion/principal/index.php");
 
-//vista
-function cabecera() 
-{
-    ?>
-    <!-- esto va en el head -->
-     <?php   
-
-
-}
-
-//vista
-function cuerpo()
-{
-?>
-    <br><br>
-   
-<?php
-}
+// Aseguramos que el script se detenga inmediatamente después de ordenar la redirección
+exit();

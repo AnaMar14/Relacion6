@@ -35,7 +35,7 @@ final class MuebleTradicional extends MuebleBase{
     }
 
      //constructor
-    #[Override]
+   
     public function __construct(string $nombre, string $fabricante = "FaMu:", string $pais = "ESPAÑA",
      int $anio = 2020, string $FechaIniVenta = "01/01/2020", string $FechaFinVenta = "31/12/2040",
       float $precio = 30, float $peso=15, string $serie="S01")
@@ -58,8 +58,8 @@ final class MuebleTradicional extends MuebleBase{
     #[Override]
     public function __toString(): string
     {
-        return parent::__toString() . ",pesa " . $this->_peso
-        . " y su serie es " . $this->_serie;
+        return parent::__toString() . ", pesa " . $this->_peso
+        . " y su serie es " . $this->_serie . ".";
     }
    
 }

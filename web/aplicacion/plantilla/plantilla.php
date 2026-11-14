@@ -72,9 +72,8 @@ function inicioCuerpo(string $cabecera, array $ubicacion=[])
             </div>
             <div id="barraMenu">
                 <ul>
-                    <li><a href="/index.php">Inicio</a></li>
                     <li><a href="/aplicacion/principal/pruebas.php">Pruebas</a></li>
-                    
+                    <li><a href="/aplicacion/principal/index.php">Página principal</a></li>
                  </ul> 
                 
             </div>

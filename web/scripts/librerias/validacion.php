@@ -192,7 +192,7 @@ function validaCadena(string &$var, int $longitud, string $defecto):bool{
         $var=$defecto;
         return false;
     }
-    $var=filter_var($var,FILTER_SANITIZE_STRING);
+    //$var=filter_var($var,FILTER_SANITIZE_STRING); obsoleto
     return true;
 }
 
