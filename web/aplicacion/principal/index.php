@@ -120,7 +120,7 @@ function cuerpo($datos)
     <br>
     <form method="get">
         <input type="submit" value="Mostrar Mueble" name="mostrarMueble">
-        <input type="submit" value="Modificar Mueble" name="modificarMueble">
+        <input type="submit" value="Modificar Mueble" name="modificarMueble" formaction="modificarMueble.php" formtarget="_blank">
         <select name="selectMuebles" id="selectMuebles">
             <option value="1" <?=($datos["MuebleElegido"]==1)? "selected":"" ?>>MESA ECO</option>
             <option value="2" <?=($datos["MuebleElegido"]==2)? "selected":"" ?>>ESTANTERÍA ROBLE</option>
@@ -198,18 +198,7 @@ function cuerpo($datos)
     <?php
       }
     ?>
-<!-- 
-    Al pulsar el botón formulario Modificar Mueble se abrirá una nueva ventana con un
-formulario que permitirá modificar los datos del mueble indicado. En el formulario se
-mostrarán inicialmente los datos que tiene el mueble según el tipo del mismo. Cuando se
-envíe el formulario, se deben validar los datos enviados según las condiciones del
-apartado 1 y 2. La mitad mediante una instancia auxiliar del tipo de mueble, llamando a
-los métodos set, y la otra mitad de las propiedades se debe validar directamente usando
-condiciones. Si todo es correcto se actualizará el mueble correspondiente y se mostrará
-un resumen con los datos recogidos. Habrá un enlace a ir a Index.php que nos permitirá
-volver a la página principal
-Ojo, al no trabajar con sesiones, al recargar la página no aparecerán los cambios en el
-mueble que hemos modificado. -->
+
     <br><br>
    
 <?php
