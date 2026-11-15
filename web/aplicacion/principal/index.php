@@ -45,7 +45,7 @@ function cabecera()
 }
 
 //vista
-function cuerpo($datos)
+function cuerpo(array $datos)
 {
 ?>
     <table class="tabla">

@@ -138,6 +138,7 @@ if(isset($_POST["modificar"])){
         $mueble->setFechaIniVenta($aux->getFechaIniVenta());
         $mueble->setFechaFinVenta($aux->getFechaFinVenta());
         $mueble->setPrecio($precio);
+        $peso = null; 
         if($esReciclado){
             $mueble->set_porcentajeReciclado((int)$valores["porcentajeReciclado"]);
         }
@@ -198,7 +199,7 @@ function mostrarError(array $errores, string $campo)
 }
 
 //vista
-function cuerpo($datos)
+function cuerpo(array $datos)
 {
     $mueble=$datos["mueble"];
     $valores=$datos["valores"];
