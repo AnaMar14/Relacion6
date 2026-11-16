@@ -14,11 +14,28 @@ class Caracteristicas implements IteratorAggregate{
                 . ', ya se indicó la característica "ÚLTIMA" ' );
             }
         }
-        $this->_caracteristicas[$name] = $value;
+
+        if($name==="numero_serie"){
+        } else {
+               $this->_caracteristicas[$name] = $value;
+        }
+     
         
     }
 
     public function __get(string $nombre): mixed {
+
+    if($nombre==="numero_serie"){
+        $secuencia="";
+        $numDigitos=0;
+        while($numDigitos<15){
+            $numRand=random_int(0,9); 
+            $secuencia.=$numRand;
+            $numDigitos++;
+        }
+        
+        return $secuencia;
+    }
         return $this->datos[$nombre] ?? null;
     }
 

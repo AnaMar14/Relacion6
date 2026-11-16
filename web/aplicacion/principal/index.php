@@ -58,6 +58,7 @@ function cuerpo(array $datos)
             <th>Fecha Fin Venta</th>
             <th>Precio</th>
             <th>Características extra</th>
+            <th>Material</th>
            
         </tr>
         <tr>
@@ -69,6 +70,7 @@ function cuerpo(array $datos)
            <td><?php echo($datos["arrayMuebles"][1]->getFechaFinVenta())?></td>
            <td><?php echo($datos["arrayMuebles"][1]->getPrecio())?></td>
            <td><?php echo($datos["arrayMuebles"][1]->getCaracteristicas())?></td>
+           <td><?php echo($datos["arrayMuebles"][1]->getMaterialDescripcion())?></td>
            
         </tr>
         <tr>
@@ -80,7 +82,7 @@ function cuerpo(array $datos)
            <td><?php echo($datos["arrayMuebles"][2]->getFechaFinVenta())?></td>
            <td><?php echo($datos["arrayMuebles"][2]->getPrecio())?></td>
            <td><?php echo($datos["arrayMuebles"][2]->getCaracteristicas())?></td>
-           
+           <td><?php echo($datos["arrayMuebles"][2]->getMaterialDescripcion())?></td>
         </tr>
         <tr>
            <td>3</td>
@@ -91,6 +93,7 @@ function cuerpo(array $datos)
            <td><?php echo($datos["arrayMuebles"][3]->getFechaFinVenta())?></td>
            <td><?php echo($datos["arrayMuebles"][3]->getPrecio())?></td>
            <td><?php echo($datos["arrayMuebles"][3]->getCaracteristicas())?></td>
+           <td><?php echo($datos["arrayMuebles"][3]->getMaterialDescripcion())?></td>
            
         </tr>
         <tr>
@@ -102,6 +105,7 @@ function cuerpo(array $datos)
            <td><?php echo($datos["arrayMuebles"][4]->getFechaFinVenta())?></td>
            <td><?php echo($datos["arrayMuebles"][4]->getPrecio())?></td>
            <td><?php echo($datos["arrayMuebles"][4]->getCaracteristicas())?></td>
+           <td><?php echo($datos["arrayMuebles"][4]->getMaterialDescripcion())?></td>
            
         </tr>
         <tr>
@@ -113,7 +117,7 @@ function cuerpo(array $datos)
            <td><?php echo($datos["arrayMuebles"][5]->getFechaFinVenta())?></td>
            <td><?php echo($datos["arrayMuebles"][5]->getPrecio())?></td>
            <td><?php echo($datos["arrayMuebles"][5]->getCaracteristicas())?></td>
-           
+           <td><?php echo($datos["arrayMuebles"][5]->getMaterialDescripcion())?></td>
         </tr>
     </table>
     <br>
@@ -180,6 +184,10 @@ function cuerpo(array $datos)
          <p>
         <?php
         echo( "Características adicionales: " . $mueble->getCaracteristicas());
+        ?>
+        </p>
+         <?php
+        echo( "Material: " . $mueble->getMaterialDescripcion());
         ?>
         </p>
         <?php

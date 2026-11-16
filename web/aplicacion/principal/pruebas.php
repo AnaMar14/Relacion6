@@ -9,7 +9,8 @@ $muebleReciclado=new MuebleReciclado(
     "15/03/2024",              // FechaIniVenta (posterior o igual al 01/01/2024)
     "31/12/2035",              // FechaFinVenta (posterior o igual a FechaIniVenta)
     120.50,                    // Precio (real >= 30)
-    85                         // PorcentajeReciclado (entero entre 0 y 100)
+    85,                         // PorcentajeReciclado (entero entre 0 y 100)
+    5               
 );
 $muebleTradicional=new MuebleTradicional(
     "Armario Ropero Clásico",  // Nombre
@@ -20,7 +21,9 @@ $muebleTradicional=new MuebleTradicional(
     "31/12/2040",              // FechaFinVenta
     450.00,                    // Precio
     95.5,                      // Peso (real entre 15 y 300)
-    "S04-CLASSIC"              // Serie (cadena)
+    "S04-CLASSIC",              // Serie (cadena)
+    20
+
 );
 // $muebleBase= new MuebleBase(
 //         "Mesa de Comedor",       // Nombre
@@ -145,7 +148,7 @@ function cuerpo($datos)
   echo("<h2>Clase caracterisicas</h2>");
   $datos["c"]->color="red";
   echo($datos["c"]."<br>");
-  $datos["c"]->ULTIMA="madera";
+ // $datos["c"]->ULTIMA="madera";
   $datos["c"]->color="blue";
   echo($datos["c"]."<br>");
   //$datos["c"]->dimensiones="20x20";
@@ -153,4 +156,27 @@ function cuerpo($datos)
   foreach($datos["c"] as $propiedad=>$valor){
     echo($propiedad.":".$valor."<br>");
   }
+
+  echo("<h2>Prueba material</h2>");
+  echo("Material de objeto mueble tradicional (get)<br>");
+  echo($datos["muebleTrad"]->getMaterial() . "->" . Materiales::tryFrom($datos["muebleTrad"]->getMaterial())->get_material() . "<br>");
+  echo("Material de objeto mueble reciclado (get)<br>");
+  echo($datos["muebleRec"]->getMaterial() . "->" . Materiales::tryFrom($datos["muebleRec"]->getMaterial())->get_material() . "<br>");
+  echo("Comprobacion setMaterial (cambio de material de mueble tradicional): <br>");
+  $datos["muebleTrad"]->setMaterial(5);
+  echo($datos["muebleTrad"]->getMaterial() . "->" . Materiales::tryFrom($datos["muebleTrad"]->getMaterial())->get_material() . "<br>");
+  echo("Comprobacion metodo getMaterialDescripcion<br>");
+  echo($datos["muebleRec"]->getMaterialDescripcion());
+  echo("<br>ToStrings de los objetos<br>");
+  echo($datos["muebleRec"] . "<br>");
+  echo($datos["muebleTrad"] . "<br>");
+
+
+  echo("<h2>Caracteristica dinamica numero_serie</h2>");
+  echo("Comprobamos que al añadir un valor a numero_serie no se guarde: <br>");
+  $datos["c"]->numero_serie="AAAA";
+  echo($datos["c"]."<br>");
+  echo("Comprobamos que devuelve la caracteristica si la llamamos: <br>");
+  echo($datos["c"]->numero_serie);
+  
 }

@@ -13,6 +13,7 @@ abstract class MuebleBase{
     private string $_FechaFinVenta;
     private float $_precio;
     private Caracteristicas $_carac;
+    private Materiales $_material;
     
 
     //prohibimos asginar propiedades de manera dinamica
@@ -23,6 +24,22 @@ abstract class MuebleBase{
     
     
     //getters y setters
+
+    //material
+    public function getMaterial():int{
+       return $this->_material->value;
+    }
+
+    public function setMaterial(int $valorMaterial):bool{
+        if(!is_null($this->_material=Materiales::tryFrom($valorMaterial))){
+            return true;
+        }
+            return false;
+    }
+
+    public function getMaterialDescripcion(){
+        return $this->_material->get_Material();
+    }
     //maximo muebles
     public static function getMaximoMuebles():int{
         return self::_MAXIMO_MUEBLES;
@@ -184,7 +201,7 @@ abstract class MuebleBase{
 
     //constructor
     public function __construct(string $nombre, string $fabricante="FaMu:", string $pais="ESPAÑA",
-     int $anio=2020, string $FechaIniVenta="01/01/2020", string $FechaFinVenta="31/12/2040",float $precio=30){
+     int $anio=2020, string $FechaIniVenta="01/01/2020", string $FechaFinVenta="31/12/2040",float $precio=30, int $material=10){
         
         if(!$this->setNombre($nombre)){
             throw new Exception("El campo nombre es obligatorio");
@@ -207,6 +224,12 @@ abstract class MuebleBase{
         if (!$this->setPrecio($precio)) {
             $this->_precio = 30;
         }
+
+        if(!$this->setMaterial($material)){
+            $this->_material=Materiales::tryFrom(10);
+        }
+
+       
         $this->_carac=new Caracteristicas();
         self::$_numMuebles++;
 
@@ -255,7 +278,8 @@ abstract class MuebleBase{
         . " a partir del año " . $this->getAnio() . ", vendido desde " . 
         $this-> getFechaIniVenta() . " hasta " .
         $this->getFechaFinVenta() . ", precio " . $this->getPrecio() 
-        . " sus caracteristicas son: " . $this->_carac->__toString();
+        . " sus caracteristicas son: " . $this->_carac->__toString()
+        . " de material " .( Materiales::tryFrom($this->getMaterial()))->get_material();
     }
 
 

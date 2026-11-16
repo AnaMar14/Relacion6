@@ -28,7 +28,8 @@ $valores=[
     "anio"=>$mueble->getAnio(),
     "fechaIniVenta"=>$mueble->getFechaIniVenta(),
     "fechaFinVenta"=>$mueble->getFechaFinVenta(),
-    "precio"=>$mueble->getPrecio()
+    "precio"=>$mueble->getPrecio(),
+    "material"=>$mueble->getMaterialDescripcion()
 ];
 if($esReciclado){
     $valores["porcentajeReciclado"]=$mueble->get_porcentajeReciclado();
@@ -271,6 +272,26 @@ function cuerpo(array $datos)
                 <label for="precio">Precio:</label>
                 <input type="text" class="for_texto" name="precio" id="precio" value="<?= htmlspecialchars($valores["precio"]) ?>">
                 <?php mostrarError($errores,"precio"); ?>
+            </p>
+            <p>
+                <label for="material">Material:</label>
+                <select name="material" id="material">
+                    <?php
+                    $arrayMateriales=Materiales::cases();
+                    foreach ($arrayMateriales as $material) {
+                       ?>
+                       <option> 
+                         <?php
+                         echo($material->get_material());
+                         ?>
+                       </option>
+                      <?php
+                    }
+                    ?>
+                    
+                </select>
+                
+                <?php mostrarError($errores,"material"); ?>
             </p>
 
             <?php
